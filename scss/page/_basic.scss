@@ -1,0 +1,49 @@
+// BASIC SETTING //
+
+.wrap{
+    font-size: $fontsize-s;
+}
+
+.content{
+    max-width: 1920px;
+}
+
+.headerStyle{
+    background-color: $color-thir;
+}
+
+.stepStatus{
+    min-height: 10vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li{
+        margin:0 5%;
+    }
+    span{
+        text-align: center;
+        background-color: $color-sev;
+        color: $color-eight;
+        border: 1.5px dashed $color-eight;
+
+        display: inline-block;
+        width: $fontsize-s;
+        height: $fontsize-s;
+        border-radius: $fontsize-s;
+        padding: 5px;
+    }
+    h6{
+        display: inline;
+        color: $color-six;
+    }
+    .activeNum{
+        background-color: $color-master;
+        border: 1.5px solid $color-master;
+        color: $color-sev;
+        box-shadow: 0px 0px 5px $color-eight;
+    }
+    .activeStep{
+        color: $color-master;
+    }
+}
