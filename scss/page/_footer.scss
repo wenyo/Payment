@@ -1,0 +1,30 @@
+// FOOTER SETTING
+
+footer{
+    width: 100vw;
+}
+
+.footerContent{
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: space-between;
+    letter-spacing: $letter-spc-m;
+    text-indent: $letter-spc-m;
+}
+
+.btnStyle{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include pointer;
+}
+
+.line{
+    height: 5px;
+    width: 38px;
+    background: $color-thir;
+    border-radius: 5px;
+    margin-top: 10px;
+}

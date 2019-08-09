@@ -1,1 +1,76 @@
 // MAIN SETTING //
+main{
+    height: 80vh;
+}
+
+.mainContent{
+    padding: 3vh 10vw;
+}
+
+main>div>div{
+    margin: 5vh 0;
+}
+
+.commodity{
+    ul{
+        display: inline-flex;
+        margin-top: 20px;
+        li{
+            background-color: $color-four;
+            padding: 30px 50px;
+            margin: 0 1%;
+            @include pointer;
+            &:nth-child(1){
+                margin-left: 0;
+            }
+            &:nth-child(4){
+                margin-right: 0;                
+            }
+        }
+    }
+}
+
+.title{
+    border-left : 5px solid $color-sec;
+    font-weight: bold;
+    font-size: $fontsize-l;
+    letter-spacing: $letter-spc-s;
+    padding-left: 10px;
+}
+
+.payment{
+    ul{
+        display: inline-flex;
+        margin-top: 20px;
+        width: 100%;
+        li{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $color-four;
+            width: 23.5%;
+            margin: 0 1%;
+            padding: 30px 0;
+            @include pointer;
+            &:nth-child(1){
+                margin-left: 0;
+            }
+            &:nth-child(4){
+                margin-right: 0;                
+            }
+            span{
+                margin-left: 5px;
+                letter-spacing: $letter-spc-s;
+                color: $color-master;
+            }
+        }
+    }
+    img{
+        height: 20px;
+        width: auto;
+    }
+}
+
+li.active{
+    background-color: $color-master;
+}
