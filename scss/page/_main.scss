@@ -204,3 +204,31 @@ li.active{
     height: 2px;
     width: 100%;
 }
+
+// Complete Order //
+
+.completeOrder{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    img{
+        height: 50vh;
+        width: auto;
+    }
+    h4{
+        font-size: $fontsize-xxl;
+        letter-spacing: $letter-spc-s;
+        color: $color-master;
+        margin: 30px 0;
+    }
+}
+
+.finish{
+    background-color: $color-four;
+    color: $color-master;
+    font-size: $fontsize-m;
+    letter-spacing: $letter-spc-s;
+    padding: 15px 80px;
+    text-align: center;
+    box-sizing: border-box;
+}
