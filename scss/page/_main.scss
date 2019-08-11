@@ -28,11 +28,18 @@ main>div>div{
             padding: 30px 50px;
             margin: 0 1%;
             @include pointer;
+            transition: all .5s;
             &:nth-child(1){
                 margin-left: 0;
             }
             &:nth-child(4){
                 margin-right: 0;                
+            }
+            &:hover{
+                background-color: $color-master;
+            }
+            &.active{
+                background-color: $color-master;
             }
         }
     }
@@ -60,6 +67,7 @@ main>div>div{
             margin: 0 1%;
             padding: 30px 0;
             @include pointer;
+            transition: all .5s;
             &:nth-child(1){
                 margin-left: 0;
             }
@@ -70,6 +78,15 @@ main>div>div{
                 margin-left: 5px;
                 letter-spacing: $letter-spc-s;
                 color: $color-master;
+                transition: all .5s;
+            }
+            &:hover, &:hover > span{
+                color: $color-sev;
+                background-color: $color-master;
+            }
+            &.active, &.active > span{
+                background-color: $color-master;
+                color: $color-sev;
             }
         }
     }
@@ -107,8 +124,11 @@ li.active{
     border-radius: 3px;
     font-size: $fontsize-s;
     &:focus{
-        border: 1px solid $color-nine;
+        border: 1px solid $color-master;
         outline: none;
+    }
+    &.warn{
+        border: 1px solid $color-nine;
     }
 }
 

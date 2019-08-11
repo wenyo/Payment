@@ -31,39 +31,29 @@
         </header>
 
         <main>
-            <div class="content mainContent">
-                <!-- <div class="commodity">
+            <div ref='paymentClass' class="content mainContent">
+                <div class="commodity" v-if='iOrderStep == 1'>
                     <h3 class="title">期間券方案</h3>
                     <ul>
-                        <li><img src="./img/photo_3hr_unselected.svg" alt=""></li>
-                        <li><img src="./img/photo_24hr_unselected.svg" alt=""></li>
-                        <li><img src="./img/photo_30days_unselected.svg" alt=""></li>
-                        <li><img src="./img/photo_90days_unselected.svg" alt=""></li>
+                        <li ref='sTicketLi' v-for='(ticket, index) in vCommodity' @click = 'chooseCommodity(index)' @mouseover='ticket["bHover"]=true' @mouseleave='ticket["bHover"]=false'>
+                            <img v-show='(iSelectCommodity !== index || !bSelectCommodityWhite) && !ticket["bHover"]' :src='ticket["unselect"]'>
+                            <img v-show='(iSelectCommodity == index && bSelectCommodityWhite) || ticket["bHover"]' :src='ticket["selectW"]'>
+                        </li>
                     </ul>
                 </div>
 
-                <div class="payment">
+                <div class="payment" v-if='iOrderStep == 1'>
                     <h3 class="title">付款方式</h3>
                     <ul>
-                        <li>
-                            <img src="./img/icon_credit card.svg" alt="">
-                            <span>信用卡</span>
-                        </li>
-                        <li>
-                            <img src="./img/icon_atm.svg" alt="">
-                            <span>銀行轉帳</span>
-                        </li>
-                        <li>
-                            <img src="./img//icon_paypal.svg" alt="">
-                        </li>
-                        <li>
-                            <img src="./img/icon_barcode.svg" alt="">
-                            <span>超商繳費</span>
+                        <li ref='payment' v-for='(pay, index2) in vPayment' @click='choosePayment(index2)' @mouseover='pay["bHover"]=true' @mouseleave='pay["bHover"]=false'>
+                            <img :src='pay["unselect"]' v-show='(iSelectPayment !== index2 || !bSelectPaymentWhite) && !pay["bHover"]'>
+                            <img :src='pay["selectW"]' v-show='(iSelectPayment == index2 && bSelectPaymentWhite) || pay["bHover"]'>
+                            <span>{{pay["payment"]}}</span>
                         </li>
                     </ul>
-                </div> -->
+                </div>
 
-                <!-- <div class="creditCard">
+                <div class="creditCard" v-if='iOrderStep == 2'>
                     <h3 class="title">信用卡資訊</h3>
                     <div class="creditInfo">
                         <label class="largeWidth creditCode">
@@ -72,8 +62,8 @@
                                 <img src="./img/icon_mastercard.svg" alt="">
                                 <img src="./img/icon_visa.svg" alt="">
                                 <img src="./img/icon_jcb.svg" alt="">
-                            </span>
-                            <input type="text" class="inputStyle largeInput" min="16" max="16" placeholder="0000-0000-0000-0000">
+                            </span>{{sWarnWord}}
+                            <input v-model='sCreditCardCode' @keyup='checkCode($event)' type="text" class="inputStyle largeInput" maxlength='19' placeholder="0000-0000-0000-0000">
                         </label>
                         <label class="smallWidth">
                             <span>有效年/月:</span>
@@ -97,7 +87,7 @@
 
                 </div>
 
-                <div class="selectedCommodity">
+                <div class="selectedCommodity" v-if='iOrderStep == 2'>
                     <img src="./img/photo_90days_selected.svg" alt="">
                     <div class="blackLine"></div>
                     <h3 class="commodityName">Karaoke期間券</h3>
@@ -108,9 +98,9 @@
                         <li>到期前追加購買，將自動延長期限。</li>
                         <li>您無法取消或退還購買的期間券。</li>
                     </ul>
-                </div> -->
+                </div>
 
-                <div class="completeOrder">
+                <div class="completeOrder" v-if='iOrderStep == 3'>
                     <img src="./img/photo_order done.svg" alt="">
                     <h4>訂單已完成！</h4>
                     <span class="finish">結束</span>
@@ -121,12 +111,12 @@
 
         <footer>
             <div class="content footerContent">
-                <div class="back btnStyle">
+                <div class="back btnStyle" @click='iOrderStep--; addContentClass()' v-if="iOrderStep !== 3">
                     <span>返回</span>
                     <div class="line"></div>
                 </div>
 
-                <div class="continue btnStyle">
+                <div class="continue btnStyle" @click='iOrderStep++; addContentClass()' v-if="iOrderStep !== 3">
                     <span>繼續</span>
                     <div class="line"></div>
                 </div>
